@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <title>Document</title>
+    <style>
+        .title{
+            font:35px;
+            color:black;
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+
+        }
+        .fa-solid {
+            margin: 10px;
+            font-size: 48px;
+            text-align: center;
+        }
+        .current {
+            text-align: center;
+            color: orange;
+        }
+        #score{
+            text-align: center;
+            font-size: 25px;
+        }
+        .correctness{
+            text-align: center;
+            font-weight: normal;
+        }
+        .resetspace{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .reset{
+            padding: 20px;
+            background-color: aqua;
+            width: 10%;
+            text-align: center;
+        }
+        .time{
+            text-align: center;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Arrow Game</h1>
+    <h3 class="time"></h3>
+    <div class="current"></div>
+    <div class="buttons">
+        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-right"></i>
+        <i class="fa-solid fa-arrow-up"></i>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <h3 id="score">Score: 0</h3>
+    <h3 class="correctness"> </h3>
+    <div class="resetspace">
+        <h3 class="reset">Reset</h3></div>
+    <script>
+        let current = document.querySelector('.current') //this is what user should pressed - orange arrow
+        let rand = Math.floor(Math.random() * 4)
+        let lst = document.querySelectorAll('.buttons .fa-solid')
+        let clickedreset = document.querySelector('.resetspace')
+        let scoree = document.getElementById('score')
+        let time = document.querySelector('.time')
+        let currenttime = 10
+        let correctness = document.querySelector('.correctness')
+        // console.log(clickedreset.innerText, 'innertext') //[here] - this prints the content between <... class='resetspace'>
+
+        function randfunc(){
+            rand = Math.floor(Math.random() * 4)
+            // [here] problem solved: arrow changing constantly but rand is always same - 'let rand = ...' (becomes a new variable that's changing but 
+            // didnt change rand outside, but clicked arrow is according to rand outside!!!) -> rand = ...
+            if (rand == 0) {
+                current.innerHTML = "<i class='fa-solid fa-arrow-left'></i>"
+            } else if (rand == 1) {
+                current.innerHTML = "<i class='fa-solid fa-arrow-right'></i>"
+            } else if (rand == 2) {
+                current.innerHTML = "<i class='fa-solid fa-arrow-up'></i>"
+            } else if (rand == 3) {
+                current.innerHTML = "<i class='fa-solid fa-arrow-down'></i>"
+            }
+        }
+        randfunc() //first call out
+        clickedreset.addEventListener('click', function (){
+            if (score > 0) {
+                //[here] must add if (score > 0) or when user clicked reset first, it goes error
+                score=0
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                correctness.innerHTML = '<h3 class="correctness"> </h3>'}
+            randfunc()})
+
+
+
+        // [here] reason why previously score in <h3 class='score'> is not updated: the score between tags added <span class='score txt'>, after removed <span, it worked>
+        let score = 0;
+        // [things to do] [here] - 1. set interval, [D]2.reset button [D]3. try print a tag's content only 4. set keyboard keydown also
+
+        setInterval(function() {
+            time.innerHTML = '<h3 class="time">'+'Time left: '+currenttime+'</h3>'
+            if (currenttime > 0) {
+            currenttime -= 1
+            } else {
+                currenttime = 10;
+                score -= 1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                correctness.innerHTML = '<h3 class="correctness"> Time out! </h3>'}
+        }, 300);
+
+        // when user clicked
+            // problem: wanted to break whole thing if correctness.innerText = 'Incorrect!'.
+        for (const l of lst) {
+            l.addEventListener('click', function() {
+            if (l.classList.contains('fa-arrow-left') && rand==0) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+                //problem: score is added but scoree is not added -> 1) 'HTMLCollection [span.score.txt, innerHTML: 0]' 2)not updated constantly
+            } else if (l.classList.contains('fa-arrow-right') && rand==1) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else if (l.classList.contains('fa-arrow-up') && rand==2) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else if (l.classList.contains('fa-arrow-down') && rand==3) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else {
+                document.querySelector('.correctness').innerText = 'Incorrect!'
+                score -= 1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                currenttime = 10;
+            }
+        } 
+            )
+        }
+        
+
+        // when user pressed keydown
+        document.body.addEventListener('keydown', function(event){
+            if (event.keyCode == 37 && rand==0) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else if (event.keyCode == 39 && rand==1) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else if (event.keyCode == 38 && rand==2) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else if ((event.keyCode ==40 && rand==3)) {
+                score+=1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+                randfunc();
+                correctness.innerHTML = '<h3 class="correctness">Correct!</h3>'
+                currenttime = 10;
+            } else {
+                document.querySelector('.correctness').innerText = 'Incorrect!'
+                currenttime = 10;
+                score -= 1
+                scoree.innerHTML = '<h3 id="score">Score: '+score+'</h3>'
+            }
+            })
+        // this prints keycode every click
+        // up = 38, down = 40, left = 37, right = 39,
+
+    </script>
+</body>
+</html>
+

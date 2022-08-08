@@ -1,0 +1,31 @@
+
+<!-- unified design for div class variable name with x + space and x only-->
+<!-- e.g. 1st div: class="box" 2nd div: class="box red"-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text div {
+            color: black;
+            background-color: greenyellow;
+            width: 80px;
+            height:80px;
+        }
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="text red"><p>text red</p></div>
+    <div class="text"><p>text</p></div>
+</body>
+</html>
+<!-- result: .class div assigns to div class="text", and .red assigns div class="text red" -->
+<!-- !!!IMP!!! .red takes properties from .text div -->
+

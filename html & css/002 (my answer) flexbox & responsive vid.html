@@ -1,0 +1,124 @@
+<!-- Flexbox & Responsive vid-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(236, 232, 232);
+        }
+        .head {
+            color: white;
+            background-color: rgb(128, 88, 185);
+            font-weight: normal;
+            text-align: center;
+            margin: 10px;
+            padding: 25px;
+            font-size: 18px;
+        }
+        .after-head {
+            color: black;
+            text-align: left;
+            font-size: 25px;
+            margin: 15px 10px 0 10px;
+        }
+        .after-head-bot {
+            color: rgb(128, 88, 185);
+            font-weight: normal;
+            text-align: left;
+            font-size: 10px;
+            margin: 1px 10px 10px 10px;; 
+        }
+        .biglines {
+            display:flex;
+            justify-content: space-between;
+            align-items:stretch;
+        }
+        .lines {
+            display:flex;
+            flex: 0.5;
+            /* margin: 10px; (p2)*/
+            /* p2: this margin changes all square's width height. IMP: problem - when only 1 left, the one's size is added to this margin extraly */
+            /* problem solved: ori: hospital box dont scale whole screen. solution: put 'display:flex;' in .lines {} as this is the bigger div for p */
+            /* IMP: after assigned .lines flex:0.5 & p flex:1, when there is only 1 row given, it automatically scale down to half */
+        }
+        p {
+            flex: 1;
+            /* need to put  'flex:1' in p and .lines */
+            color: black;
+            padding: 40px;
+            padding-top:10px;
+            padding-bottom: 10px;
+            padding-left: 7px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: left;
+            background-color: white;
+            margin: 10px;
+            /*p2) solved. add margin: 10px in here instead  */
+        }
+        .time{
+            text-align: end; /*question - why is this not changed?*/
+            color: green;
+        }
+        .hospital{
+            font-size: 10px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h3 class="head">医院實時資訊</h3>
+    <h3 class="after-head">急診最長等候時間</h3><span class="after-head-bot">資訊來源：醫管局</span></h3>
+    <div class="biglines">
+        <div class="lines">
+        <p>東涌 <span class="time"> &lt; 1 小时</span>
+        <br><span class="hospital">hospital 1</span></p>
+        </div>
+        <div class="lines">
+            <p class="line">天水圍 <span class="time"> <2 小时</span>
+            <br><span class="hospital">hospital 2</span></p>
+        </div>
+    </div>
+    <div class="biglines">
+        <div class="lines">
+        <p>东涌 <span class="time"> <1 小时</span>
+        <br><span class="hospital">hospital 1</span></p>
+        </div>
+        <div class="lines">
+            <p class="line">天水圍 <span class="time"> <2 小时</span>
+            <br><span class="hospital">hospital 2</span></p>
+        </div>
+    </div>
+    <div class="biglines">
+        <div class="lines">
+        <p>东涌 <span class="time"> <1 小时</span>
+        <br><span class="hospital">hospital 1</span></p>
+        </div>
+        <div class="lines">
+            <p class="line">天水圍 <span class="time"> <2 小时</span>
+            <br><span class="hospital">hospital 2</span></p>
+        </div>
+    </div>
+    <div class="biglines">
+        <div class="lines">
+        <p>东涌 <span class="time"> <1 小时</span>
+        <br><span class="hospital">hospital 1</span></p>
+        </div>
+        <div class="lines">
+            <p class="line">天水圍 <span class="time"> <2 小时</span>
+            <br><span class="hospital">hospital 2</span></p>
+        </div>
+    </div>    
+    <div class="biglines">
+        <div class="lines">
+        <p>东涌 <span class="time"> <1 小时</span>
+        <br><span class="hospital">hospital 1</span></p>
+        </div>
+    </div>
+</body>
+</html>

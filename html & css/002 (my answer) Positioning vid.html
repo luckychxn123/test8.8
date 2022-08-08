@@ -1,0 +1,232 @@
+
+
+<!-- vid Positioning my answers -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(236, 232, 232);
+        }
+        .head {
+            color: white;
+            background-color: rgb(128, 88, 185);
+            font-weight: normal;
+            text-align: center;
+            margin: 10px;
+            padding: 25px;
+            font-size: 18px;
+        }
+        .set {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+        }
+        .big{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 200px;
+            width: 48%;
+            margin:10px;
+            background-color: rgb(197, 34, 34);
+            border-radius: 15px;
+            }
+        .sec{
+            background-color: rgb(64, 39, 186);
+        }
+        .big h3{
+            font-weight: normal;
+            margin: 20px;
+            font-size: 30px;
+        }
+        .hitem{
+            font-weight: bold;
+            margin: 20px;
+            font-size: 20px;
+            text-align: left;;
+        }
+        .big p{
+            font-weight: normal;
+            font-size: 13px;
+            margin: 10px;
+            /* text-align: left; */
+        }
+        .small{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 10px;
+            background-color:rgba(200, 214, 225, 0.834);
+            font-size: 15px;
+            width: 10%;
+        }
+        .small div{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="head">航班實時資訊</h3>
+    <div class="set">
+        <div class="set big">
+            <h3>HK Departure<br>
+            <span class="hitem">HK citizens cannot enter from: </span></h3>
+            <div class="set small">
+                <div><p>taiwan</p>     </div>
+                <div><p>balin</p>      </div>
+                <div><p>israel</p>     </div>
+                <div><p>russia</p>     </div>
+                <div><p>kuwait</p>     </div>
+                <div><p>philipines</p> </div>
+                <div><p>north korea</p></div>
+                <div><p>mongol</p>     </div>
+                <div><p>canada</p>     </div>
+            </div>
+        </div>
+        <div class="set big sec">
+        <h3>HK Arrivals<br>
+        <span class="hitem">Citizens that cannot enter HK:</span></h3>
+            <div class="set big small">
+                <p>Worldwide</p>
+                <p>China</p>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background-color: rgb(236, 232, 232);
+            margin: 0;
+            padding-top: 50px;
+            /*  after adding 'margin:0' in body, the .head has no more indented space */
+        }
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(128, 88, 185);
+            padding: 30px 0;
+            position:fixed;
+            width: 100%;
+            top: 0;
+            box-sizing:border-box;
+        }
+        .head h3{
+            color: white;
+            font-weight: normal;
+            font-size: 22px;
+            text-align: center;
+            flex: 1;
+            margin-top: 0;
+            margin-bottom: 0px;
+            /* flex: 1; this make h3 and a not stick together [IMP] */
+        }
+        .head a{
+            justify-content: space-between;
+            text-decoration: none;
+            font-size: 15px;
+            align-items: end;
+            color: white;
+            padding-right: 10px;
+            /* 'padding-right' here moves 'share' x px to left */
+        }
+        .bigbox{
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-evenly;
+            color: white;
+
+        }
+        .departure, .arrival{
+            padding-left: 20px;
+            width: 48%;
+            margin: 20px;
+            position: relative;
+            /* this allows the 2 sticked image to be assigned accordingly to each box's top right corner */
+            border-radius: 25px;
+        }
+        .departure{
+            background: linear-gradient(45deg, rgb(182, 70, 70), rgb(226, 159, 159));
+        }
+        .arrival{
+            background: linear-gradient(45deg, rgb(55, 55, 140), rgb(117, 117, 176));
+        }
+        .ditems{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin: 10px;
+        }
+        .ditems p{
+            background-color: rgba(200, 193, 200, 0.398);
+            /* width: 11%;
+            height: 8%; */
+            /* if set width and height, when sqeeze, text all sqeezed together */
+            padding: 10px;
+            border-radius: 25px;
+            text-align:center;
+            margin: 3px;
+        }
+        .departure img, .arrival img{
+            /* position: absolute; */
+            position: absolute;
+            top: -70px;
+            right: -30px;
+            width: 120px;
+            height: 140px;
+            /* [IMP] [problem solved] when squezed, plane move up -> because used % for width and height*/
+            /* [IMP] must align pics within the div for img since the img have to be in middle*/
+        }
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h3>航班實時資訊</h3><a href="http://www.gov.hk">分享✨</a>
+    </div>
+    <div class="bigbox">
+        <div class="departure">
+        <h3>离港</h3>
+        <img src="./WEB001 pic materials/cartoon plane.png">
+        <p>HK citizens cannot enter from countries of: </p>
+            <div class="ditems">
+                <p >aaaaaa</p>
+                <p >bbbbbb</p>
+                <p >cccc</p>
+                <p >aaa</p>
+                <p >bbbbb</p>
+                <p >aaaaaa</p>
+                <p >bbbbbb</p>
+                <p >ccccccc</p>
+                <p >bbbbb</p>
+            </div>
+        </div>
+        <div class="arrival">
+        <h3>抵港</h3>
+        <img src="./WEB001 pic materials/cartoon plane.png">
+        <p>Citizens from the following countries aren't allow to enter HK: </p>
+                <div class="ditems">
+                <p >aaaaaa</p>
+                <p >bbbbbb</p>
+                <p >cccc</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
